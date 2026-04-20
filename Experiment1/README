@@ -1,0 +1,107 @@
+Overview
+
+This experiment demonstrates the fundamentals of network communication using Python sockets.
+We build a simple system where a client sends a message to a server, and the server responds back.
+
+This forms the foundation of system design, as almost all distributed systems rely on client-server communication.
+
+Objectives
+Understand how client-server architecture works
+Learn socket programming in Python
+Establish communication using TCP protocol
+Send and receive data between systems
+Get introduced to network ports and connections
+Requirements
+Software
+Python 3.x installed
+Any code editor (VS Code / PyCharm / Notepad++)
+Terminal or Command Prompt
+Libraries Used
+Built-in Python library:
+socket
+threading (optional for multi-client)
+
+No external installations required
+
+How to Run
+Step 1: Start Server
+python server.py
+Step 2: Start Client (in another terminal)
+python client.py
+Workflow
+Server starts and listens on a specific port (5000)
+Client connects using IP address + port
+Client sends a message
+Server receives and processes it
+Server sends a response back
+Connection is closed
+Internal Working
+Key Concepts
+1. Socket
+
+A socket is an endpoint for communication between two machines.
+
+socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+AF_INET → IPv4
+SOCK_STREAM → TCP protocol
+2. Server Side
+bind() → Assigns IP and port
+listen() → Waits for incoming connections
+accept() → Accepts client connection
+server.bind(("localhost", 5000))
+server.listen(1)
+client_socket, addr = server.accept()
+3. Client Side
+connect() → Connects to server
+client.connect(("localhost", 5000))
+4. Data Transmission
+Data is sent in bytes, not strings
+Hence we use:
+.encode()   # string → bytes
+.decode()   # bytes → string
+5. Communication Flow
+Client  -------->  Server
+        message
+
+Server  -------->  Client
+        response
+What You Will Learn
+
+By completing this experiment, you will:
+
+Understand how the internet works at a basic level
+Learn TCP communication
+Understand request-response model
+Get clarity on ports, IPs, sockets
+Build foundation for:
+
+REST APIs
+Microservices
+Distributed systems
+Chat applications
+Extensions (Optional)
+
+Try enhancing your project:
+
+Echo server (send back same message)
+Continuous communication using loops
+Handle multiple clients using threads
+Build a simple chat system
+Common Errors
+Error	Cause	Fix
+Address already in use	Port occupied	Change port
+Connection refused	Server not running	Start server first
+Program stuck	Waiting for input	Expected behavior
+Real-World Relevance
+
+This experiment is the base of:
+
+Web servers (like Apache, Nginx)
+Messaging apps (WhatsApp, Telegram)
+Distributed systems
+APIs and microservices
+Conclusion
+
+This experiment introduces the core building block of system design — communication between systems.
+
+Mastering this ensures you can understand how real-world scalable systems operate internally.
