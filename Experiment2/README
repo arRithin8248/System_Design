@@ -1,0 +1,109 @@
+Overview
+
+This experiment demonstrates how to build a RESTful API using Python and Flask.
+We create a backend system that allows users to perform CRUD operations (Create, Read, Update, Delete).
+
+The API communicates using HTTP requests and JSON responses, which is the standard for modern web applications.
+
+This experiment builds on client-server communication and introduces how real-world backend systems are designed.
+
+Objectives
+Understand how REST APIs work
+Learn different HTTP methods (GET, POST, PUT, DELETE)
+Build a CRUD-based backend service
+Handle JSON data exchange
+Implement basic validation and error handling
+Introduce data persistence using files
+Requirements
+Software
+Python 3.x installed
+Any code editor (VS Code / PyCharm / Notepad++)
+Terminal or Command Prompt
+Libraries Used
+Flask (lightweight web framework)
+Built-in libraries:
+json
+os
+Installation
+pip install flask
+Project Structure
+Experiment-2/
+│
+├── app.py        # Main API server
+├── users.json    # Data storage (auto-created)
+└── README.md     # Documentation
+How to Run
+Step 1: Start Server
+python app.py
+
+Server runs on:
+
+http://127.0.0.1:5000/
+Workflow
+Client sends HTTP request (GET/POST/PUT/DELETE)
+Flask server receives request
+Server processes logic
+Data is read/written from JSON file
+Server sends JSON response
+Client receives output
+Internal Working
+Key Concepts
+1. REST API
+
+REST (Representational State Transfer) uses HTTP methods:
+
+GET     → Read data
+POST    → Create data
+PUT     → Update data
+DELETE  → Delete data
+2. Flask Routing
+
+Routes map URLs to functions:
+
+@app.route('/users', methods=['GET'])
+
+Each route handles a specific operation.
+
+3. In-Memory + File Storage
+Data is stored in a list (users)
+Persisted in users.json
+json.dump(users, file)
+json.load(file)
+4. JSON Communication
+
+Client sends:
+
+{
+  "name": "Rithin",
+  "age": 21
+}
+
+Server responds:
+
+{
+  "message": "User created"
+}
+5. Request Handling
+request.json
+
+Used to extract incoming data from client.
+
+6. Response Handling
+jsonify(data)
+
+Used to send structured JSON response.
+
+7. Validation
+Checks for required fields
+Ensures valid data types
+
+Example:
+
+Age must be a positive integer
+Name must exist
+8. Communication Flow
+Client  -------->  Server
+        HTTP Request (JSON)
+
+Server  -------->  Client
+        JSON Response
